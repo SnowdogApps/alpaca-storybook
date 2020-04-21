@@ -1,0 +1,110 @@
+@import '../../../assets/styles/_globals.scss';
+
+$tabs__border-width                    : 1px !default;
+$tabs__border-width--large             : 8px !default;
+
+// title
+$tabs__title-padding                   : $spacer--medium !default;
+$tabs__title-border                    : $tabs__border-width solid $gray-light !default;
+$tabs__title-border\@large             : $tabs__border-width--large solid $gray-lightest !default;
+$tabs__title-border\@large--active     : $tabs__border-width--large solid $color-primary !default;
+$tabs__title-color                     : $gray !default;
+$tabs__title-color--active             : $gray-darker !default;
+$tabs__title-font-weight\@large        : $font-weight-normal !default;
+$tabs__title-font-weight\@large--active: $font-weight-bold !default;
+$tabs__title-font-weight               : $font-weight-bold !default;
+$tabs__title-background                : $bg-color-base !default;
+$tabs__title-background--active        : $gray-lightest !default;
+$tabs__title-background\@large-active  : $gray-lightest !default;
+$tabs__content-padding                 : $spacer--medium !default;
+$tabs__content-padding\@large          : $spacer--large $spacer--extra-large !default;
+
+// icon
+$tabs__icon-color                      : $gray !default;
+$tabs__icon-color--active              : $gray-darker !default;
+$tabs__icon-padding                    : 16px !default;
+$tabs__icon-size                       : 48px !default;
+
+.tabs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @include mq($screen-l) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    flex: 100%;
+    padding: $tabs__content-padding;
+
+    @include mq($screen-l) {
+      padding: $tabs__content-padding\@large;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: $tabs__icon-size;
+    height: $tabs__icon-size;
+    padding: $tabs__icon-padding;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: $transition-base;
+    fill: $tabs__icon-color;
+  }
+
+  &__nav-button {
+    position: relative;
+    flex: 1;
+    padding: $tabs__title-padding;
+    color: $tabs__title-color;
+    font-weight: $tabs__title-font-weight;
+    text-align: center;
+    background: $tabs__title-background;
+    border: $tabs__title-border;
+    border-width: $tabs__border-width 0 0 0;
+    border-radius: $reset;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $tabs__title-color;
+      background: $tabs__title-background;
+    }
+
+    @include mq($screen-l) {
+      font-weight: $tabs__title-font-weight\@large;
+      border-top: none;
+      border-bottom: $tabs__title-border\@large;
+    }
+
+    &--active {
+      color: $tabs__title-color--active;
+      background: $tabs__title-background--active;
+      border-top: none;
+      border-bottom: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $tabs__title-color--active;
+        background: $tabs__title-background--active;
+      }
+
+      @include mq($screen-l) {
+        font-weight: $tabs__title-font-weight\@large--active;
+        background-color: $tabs__title-background\@large-active;
+        border-bottom: $tabs__title-border\@large--active;
+      }
+
+      .tabs__icon {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+}

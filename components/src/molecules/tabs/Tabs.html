@@ -1,0 +1,24 @@
+<div class="tabs">
+  <a-button
+    v-for="(tab, idx) in tabs"
+    :key="`tab_${idx}`"
+    @click.native="selectTab(tab)"
+    :style="{ order: idx }"
+    :class="[
+      'tabs__nav-button',
+      { 'tabs__nav-button--active': tab.isActive }
+    ]"
+  >
+    <!-- @slot Custom tab button content (Scoped slot) -->
+    <slot name="tab-button" :tab="tab">
+      {{ tab.name }}
+    </slot>
+  </a-button>
+
+  <div
+    class="tabs__content"
+    :style="{ order: getContentOrder }"
+  >
+    <slot />
+  </div>
+</div>
