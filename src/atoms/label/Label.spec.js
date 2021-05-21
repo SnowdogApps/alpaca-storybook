@@ -5,21 +5,7 @@ describe('Label', () => {
   it('has default structure', () => {
     const wrapper = mount(ALabel)
 
-    expect(wrapper.is('label')).toBe(true)
-    expect(wrapper.classes()).toContain('a-label')
-    expect(wrapper.classes().length).toBe(1)
-  })
-
-  it('renders custom root element', () => {
-    const wrapper = mount(ALabel, {
-      propsData: {
-        tag: 'span'
-      }
-    })
-
-    expect(wrapper.is('span')).toBe(true)
-    expect(wrapper.classes()).toContain('a-label')
-    expect(wrapper.classes().length).toBe(1)
+    expect(wrapper.element.tagName).toBe('LABEL')
   })
 
   it('renders slot text when passed', () => {

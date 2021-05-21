@@ -1,0 +1,8 @@
+.a-fieldset__legend {
+  @apply mb-4;
+  @apply text-lg leading-relaxed;
+}
+
+.a-fieldset__legend--hidden {
+  @apply sr-only;
+}

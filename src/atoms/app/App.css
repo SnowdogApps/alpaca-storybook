@@ -1,0 +1,6 @@
+/* Not the prettiest way, but I need it to work now */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Work+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

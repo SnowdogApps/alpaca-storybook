@@ -9,4 +9,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./Icon.scss" />
+<style src="./Icon.css" />

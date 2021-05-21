@@ -1,0 +1,53 @@
+<nav
+  :aria-label="breadcrumbsNavAriaLabel"
+  :class="getClass('breadcrumbs')"
+>
+  <ol :class="getClass('breadcrumbs__list')">
+    <li
+      v-for="(breadcrumb, i) in breadcrumbs"
+      :key="`breadcrumb-${i}`"
+      :class="getClass('breadcrumbs__list-item')"
+    >
+      <template v-if="breadcrumbs.length === i + 1">
+        <!-- @slot Current page (Scoped slot) -->
+        <slot
+          name="current"
+          :breadcrumb="breadcrumb"
+        >
+          <a-link
+            :href="breadcrumb.href"
+            aria-current="page"
+            variant="none"
+            :class="getClass('breadcrumbs__link--current')"
+          >
+            {{ breadcrumb.text }}
+          </a-link>
+        </slot>
+      </template>
+      <template v-else>
+        <!-- @slot Previous pages (Scoped slot) -->
+        <slot
+          name="previous"
+          :breadcrumb="breadcrumb"
+        >
+          <a-link
+            :href="breadcrumb.href"
+            variant="none"
+            :class="getClass('breadcrumbs__link')"
+          >
+            {{ breadcrumb.text }}
+          </a-link>
+        </slot>
+        <!-- @slot Separator (Named slot) -->
+        <slot name="separator">
+          <span
+            role="presentation"
+            :class="getClass('breadcrumbs__separator')"
+          >
+            /
+          </span>
+        </slot>
+      </template>
+    </li>
+  </ol>
+</nav>

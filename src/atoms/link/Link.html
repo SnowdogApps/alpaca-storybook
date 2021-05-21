@@ -1,4 +1,7 @@
-<a class="a-link">
+<component
+  :is="tag"
+  :class="getClass('link')"
+>
   <!-- @slot Slot for link content -->
   <slot />
-</a>
+</component>

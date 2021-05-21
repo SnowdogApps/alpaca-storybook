@@ -1,12 +1,36 @@
 version: 2
 jobs:
-  build:
+  lint:
     docker:
-      - image: circleci/node:dubnium
+      - image: circleci/node:lts
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run: yarn eslint
       - run: yarn stylelint
+  test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run: yarn test
-      - run: yarn codecov
+
+workflows:
+  version: 2
+  lint-and-test:
+    jobs:
+      - lint
+      - test

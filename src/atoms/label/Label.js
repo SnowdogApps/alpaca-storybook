@@ -1,12 +1,26 @@
-// @vue/component
+import getClass from '../../../utils/helpers/get-class.js'
+
 export default {
-  props: {
-    /**
-     * Label tag
-     */
-    tag: {
-      type: String,
-      default: 'label'
+  mixins: [getClass],
+  data () {
+    return {
+      config: {
+        base: {
+          label: [
+            'leading-relaxed'
+          ]
+        },
+        primary: {
+          label: [
+            'text-gray-600'
+          ]
+        },
+        hidden: {
+          label: [
+            'sr-only'
+          ]
+        }
+      }
     }
   }
 }

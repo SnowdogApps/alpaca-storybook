@@ -1,0 +1,6 @@
+.a-blockquote {
+  @apply my-2;
+  @apply py-2 pr-2 pl-4;
+  @apply border-l-4 border-solid border-light;
+  @apply leading-relaxed;
+}

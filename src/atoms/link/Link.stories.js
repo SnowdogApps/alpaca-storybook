@@ -1,37 +1,38 @@
-import { storiesOf } from '@storybook/vue'
-import { select, text } from '@storybook/addon-knobs'
-
-import generateVueInfoTable from '@utils/helpers/generate-vue-info-table.js'
-import getClassKnobsConfig from '@utils/helpers/get-class-knobs-config.js'
-import selectorsConfig from './Link.selectors.json'
-
 import ALink from './Link.vue'
 
-const info = `
-  <p>Check <b>Knobs</b> tab to edit component properties dynamically.</p><br>
-  ${generateVueInfoTable(selectorsConfig, 'BEM modifiers')}
-`
-
-const classKnobsConfig = getClassKnobsConfig(selectorsConfig)
-
-storiesOf('Atoms/Link', module)
-  .addParameters({ info })
-  .add('Default', () => ({
-    components: { ALink },
-    props: {
-      textKnob: {
-        default: text('Link text', 'Default link')
-      },
-      classKnob: {
-        default: select('BEM Modifier', classKnobsConfig)
+export default {
+  title: 'Atoms/Link',
+  component: ALink,
+  argTypes: {
+    variant: {
+      control: {
+        type: 'select',
+        options: [
+          'primary',
+          'inverted',
+          'secondary'
+        ]
       }
-    },
-    template: `
-      <a-link
-        href="#"
-        :class="classKnob"
-      >
-        {{ textKnob }}
-      </a-link>
-    `
-  }))
+    }
+  }
+}
+
+const Template = (args, { argTypes }) => ({
+  components: { ALink },
+  props: Object.keys(argTypes),
+  template: `
+    <a-link
+      :tag="tag"
+      :variant="variant"
+    >
+      {{ text }}
+    </a-link>
+  `
+})
+
+export const Default = Template.bind({})
+Default.args = {
+  tag: 'a',
+  variant: 'primary',
+  text: 'Link'
+}

@@ -1,0 +1,15 @@
+.btn {
+  @apply bg-dark text-white px-4 h-12;
+}
+
+.btn:hover {
+  @apply text-gray-300;
+}
+
+.btn--secondary {
+  @apply bg-primary text-primary border-2 border-dark;
+}
+
+.btn--secondary:hover {
+  @apply bg-dark text-white;
+}

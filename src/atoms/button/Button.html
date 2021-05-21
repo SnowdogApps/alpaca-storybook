@@ -1,6 +1,8 @@
 <button
-  class="a-button"
+  :class="getClass('button')"
   type="button"
+  v-bind="$attrs"
+  v-on="$listeners"
 >
   <!-- @slot Slot for button content -->
   <slot />

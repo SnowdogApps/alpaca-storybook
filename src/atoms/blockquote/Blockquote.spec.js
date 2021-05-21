@@ -5,7 +5,7 @@ describe('Blockquote', () => {
   it('has default structure', () => {
     const wrapper = mount(ABlockquote)
 
-    expect(wrapper.is('blockquote')).toBe(true)
+    expect(wrapper.element.tagName).toBe('BLOCKQUOTE')
     expect(wrapper.classes()).toContain('a-blockquote')
     expect(wrapper.classes().length).toBe(1)
   })

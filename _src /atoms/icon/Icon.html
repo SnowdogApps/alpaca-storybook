@@ -1,0 +1,16 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24px"
+  height="24px"
+  class="a-icon"
+  :viewBox="viewBox"
+  :aria-labelledby="id"
+  :role="role"
+>
+  <title
+    v-if="title && role === 'img'"
+    :id="id"
+  >{{ title }}</title>
+  <!-- @slot Slot for particular Icon template -->
+  <slot />
+</svg>

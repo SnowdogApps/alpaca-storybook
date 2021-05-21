@@ -1,0 +1,16 @@
+.a-container {
+  @apply mx-2;
+  @apply max-w-content;
+}
+
+@screen lg {
+  .a-container {
+    @apply mx-10;
+  }
+}
+
+@media (min-width: 1344px) {
+  .a-container {
+    @apply mx-auto;
+  }
+}

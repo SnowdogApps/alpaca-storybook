@@ -5,9 +5,7 @@ describe('Link', () => {
   it('has default structure', () => {
     const wrapper = mount(ALink)
 
-    expect(wrapper.is('a')).toBe(true)
-    expect(wrapper.classes()).toContain('a-link')
-    expect(wrapper.classes().length).toBe(1)
+    expect(wrapper.element.tagName).toBe('A')
   })
 
   it('renders slot text when passed', () => {
@@ -17,8 +15,8 @@ describe('Link', () => {
       }
     })
 
-    expect(wrapper.find('.a-link').exists()).toBe(true)
-    expect(wrapper.find('.a-link').text()).toEqual('Link default text')
+    expect(wrapper.exists()).toBe(true)
+    expect(wrapper.element.text).toEqual('Link default text')
   })
 
   it('should be generated with the `href` passed as attributes', () => {
@@ -28,8 +26,6 @@ describe('Link', () => {
         href
       }
     })
-    expect(wrapper.is('a')).toBe(true)
-    expect(wrapper.classes()).toContain('a-link')
     expect(wrapper.attributes().href).toBeDefined()
     expect(wrapper.attributes().href).toEqual(href)
   })

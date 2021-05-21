@@ -1,0 +1,2 @@
+// @vue/component
+export default {}

@@ -39,7 +39,7 @@ npm install @snowdog/alpaca-ui
 
 ### Usage
 
-Import component in your app using named imports:
+#### 1. Import component in your app using named imports
 
 `import { AButton } from '@snowdog/alpaca-ui'`
 
@@ -49,7 +49,9 @@ Import component in your app using named imports:
     Alpaca button
   </a-button>
 </template>
+```
 
+```vue
 <script>
 import { AButton } from '@snowdog/alpaca-ui'
 
@@ -60,7 +62,18 @@ export default {
 </script>
 ```
 
-If you need more flexibility you can take the source:
+Requires adding aliases for atoms, molecules and organisms.
+Nuxt.js example:
+
+```js
+alias: {
+  '@atoms': resolve(__dirname, './node_modules/@snowdog/alpaca-ui/src/atoms'),
+  '@molecules': resolve(__dirname, './node_modules/@snowdog/alpaca-ui/src/molecules'),
+  '@organisms': resolve(__dirname, './node_modules/@snowdog/alpaca-ui/src/organisms'),
+}
+```
+
+#### 2. Create a new component and import all component parts for more flexibility
 
 ```vue
 <template src="@snowdog/alpaca-ui/src/atoms/button/Button.html" />
@@ -72,14 +85,12 @@ export default {
   mixins: [AButton]
 }
 </script>
-
-<style src="@snowdog/alpaca-ui/src/atoms/button/Button.scss" lang="scss" />
 ```
 For now, to see all possible cases/modifiers, you should clone and run repo as in Development point, or check .stories.js file in component.
 
 ## Browser support
 
-Recent versions of Firefox, Chrome, Edge, Opera, Safari and IE11+.
+Recent versions of Firefox, Chrome, Edge, Opera and Safari.
 
 ## Contributing
 

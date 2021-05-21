@@ -1,45 +1,54 @@
-import { storiesOf } from '@storybook/vue'
-import { text } from '@storybook/addon-knobs'
-
 import APrice from './Price.vue'
 
-storiesOf('Atoms/Price', module)
-  .addParameters({ info: true })
-  .add('Default', () => ({
-    components: { APrice },
-    props: {
-      regularPriceKnobs: {
-        default: text('Regular price', '$36,00')
+export default {
+  title: 'Atoms/Price',
+  component: APrice,
+  argTypes: {
+    regularPrice: {
+      control: {
+        type: 'text'
       }
     },
-    template: '<a-price :regular-price="regularPriceKnobs" />'
-  }))
-  .add('Special Price', () => ({
-    components: { APrice },
-    props: {
-      regularPriceKnobs: {
-        default: text('Regular price', '$36,00')
-      },
-      specialPriceKnobs: {
-        default: text('Special price', '$19,90')
+    specialPrice: {
+      control: {
+        type: 'text'
       }
     },
-    template: `
-      <a-price
-        :regular-price="regularPriceKnobs"
-        :special-price="specialPriceKnobs"
-        aria-label-special-price="Special price:"
-        aria-label-old-price="Old price:"
-      />
-    `
-  }))
-  .add('With slot', () => ({
-    components: { APrice },
-    template: `
-      <a-price>
-        <template #regularPrice>
-          Price: <span style="color: #2b15e0;">$123</span>
-        </template>
-      </a-price>
-    `
-  }))
+    ariaLabelOldPrice: {
+      control: {
+        type: 'text'
+      }
+    },
+    ariaLabelSpecialPrice: {
+      control: {
+        type: 'text'
+      }
+    }
+  }
+}
+
+const Template = (args, { argTypes }) => ({
+  components: { APrice },
+  props: Object.keys(argTypes),
+  template: `
+    <a-price
+      :regular-price="regularPrice"
+      :special-price="specialPrice"
+      :aria-label-special-price="ariaLabelSpecialPrice"
+      :aria-label-old-price="ariaLabelOldPrice"
+    />
+  `
+})
+
+export const Default = Template.bind({})
+Default.args = {
+  regularPrice: '$36,00'
+}
+
+export const SpecialPrice = Template.bind({})
+SpecialPrice.args = {
+  ...Default.args,
+  specialPrice: '$19,90',
+  ariaLabelOldPrice: 'Price reduced from:',
+  ariaLabelSpecialPrice: 'On sale at:'
+}

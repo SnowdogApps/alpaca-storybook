@@ -1,16 +1,19 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="24px"
-  height="24px"
+  :width="`${width}px`"
+  :height="`${height}px`"
   class="a-icon"
-  :viewBox="viewBox"
-  :aria-labelledby="id"
-  :role="role"
+  :viewBox="viewBox ? viewBox : `0 0 ${width} ${height}`"
+  :aria-labelledby="ariaId"
+  :role="title ? 'img' : 'presentation'"
+  :focusable="title ? null : 'false'"
 >
   <title
-    v-if="title && role === 'img'"
-    :id="id"
-  >{{ title }}</title>
+    v-if="title"
+    :id="ariaId"
+  >
+    {{ title }}
+  </title>
   <!-- @slot Slot for particular Icon template -->
   <slot />
 </svg>

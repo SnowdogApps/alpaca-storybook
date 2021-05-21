@@ -1,39 +1,44 @@
-// @vue/component
+import getClass from '../../../utils/helpers/get-class.js'
+
 export default {
+  mixins: [getClass],
   props: {
     /**
-     * Heading level (1-6)
-     */
-    level: {
-      type: Number,
-      required: true,
-      validator: level => level >= 1 && level <= 6
-    },
-    /**
-     * To use another tag instead of `h{level}`
+     * To define tag for component
      */
     tag: {
       type: String,
-      default: null
+      required: true
     }
   },
-  computed: {
-    levelClassName () {
-      switch (this.level) {
-        case 1:
-          return 'first'
-        case 2:
-          return 'second'
-        case 3:
-          return 'third'
-        case 4:
-          return 'fourth'
-        case 5:
-          return 'fifth'
-        case 6:
-          return 'sixth'
-        default:
-          return null
+  data () {
+    return {
+      config: {
+        base: {
+          heading: [
+            'leading-relaxed'
+          ]
+        },
+        'first-level': {
+          heading: [
+            'text-3xl'
+          ]
+        },
+        'second-level': {
+          heading: [
+            'text-2xl'
+          ]
+        },
+        'third-level': {
+          heading: [
+            'text-xl'
+          ]
+        },
+        'font-secondary': {
+          heading: [
+            'font-serif'
+          ]
+        }
       }
     }
   }

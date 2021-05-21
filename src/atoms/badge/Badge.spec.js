@@ -5,9 +5,7 @@ describe('Badge', () => {
   it('has default structure', () => {
     const wrapper = mount(ABadge)
 
-    expect(wrapper.is('div')).toBe(true)
-    expect(wrapper.classes()).toContain('a-badge')
-    expect(wrapper.classes().length).toBe(1)
+    expect(wrapper.element.tagName).toBe('DIV')
   })
 
   it('renders slot text when passed', () => {
@@ -17,8 +15,8 @@ describe('Badge', () => {
       }
     })
 
-    expect(wrapper.find('.a-badge').exists()).toBe(true)
-    expect(wrapper.find('.a-badge').text()).toEqual('Badge default text')
+    expect(wrapper.find('div').exists()).toBe(true)
+    expect(wrapper.find('div').text()).toEqual('Badge default text')
   })
 
   it('renders custom root element', () => {
@@ -28,8 +26,6 @@ describe('Badge', () => {
       }
     })
 
-    expect(wrapper.is('span')).toBe(true)
-    expect(wrapper.classes()).toContain('a-badge')
-    expect(wrapper.classes().length).toBe(1)
+    expect(wrapper.element.tagName).toBe('SPAN')
   })
 })

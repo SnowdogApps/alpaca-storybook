@@ -1,0 +1,13 @@
+/* Not the prettiest way, but I need it to work now */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Work+Sans:wght@400;500;700&display=swap');
+@import '../../../assets/styles/_globals.scss';
+@import '../../../assets/styles/_reset.scss';
+@import '../../../assets/styles/_focus-visible.scss';
+@import '../../../assets/styles/transitions/_fade.scss';
+@import '../../../assets/styles/transitions/_slide-up.scss';
+@import '../../../assets/styles/transitions/_slide-right.scss';
+@import '../../../assets/styles/transitions/_slide-down.scss';
+@import '../../../assets/styles/transitions/_slide-left.scss';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

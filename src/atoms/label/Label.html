@@ -1,6 +1,4 @@
-<component
-  :is="tag"
-  class="a-label"
->
+<label :class="getClass('label')">
+  <!-- @slot Slot for label content -->
   <slot />
-</component>
+</label>

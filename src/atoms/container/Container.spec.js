@@ -5,7 +5,7 @@ describe('Container', () => {
   it('has default structure', () => {
     const wrapper = mount(AContainer)
 
-    expect(wrapper.is('main')).toBe(true)
+    expect(wrapper.element.tagName).toBe('MAIN')
     expect(wrapper.classes()).toContain('a-container')
     expect(wrapper.classes().length).toBe(1)
   })
@@ -17,7 +17,7 @@ describe('Container', () => {
       }
     })
 
-    expect(wrapper.is('div')).toBe(true)
+    expect(wrapper.element.tagName).toBe('DIV')
     expect(wrapper.classes()).toContain('a-container')
     expect(wrapper.classes().length).toBe(1)
   })

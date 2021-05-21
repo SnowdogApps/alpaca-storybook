@@ -1,0 +1,19 @@
+.a-loader {
+  @apply hidden absolute top-0 left-0;
+  @apply w-full h-full;
+}
+
+.a-loader--visible {
+  @apply block;
+}
+
+.a-loader__circle {
+  @apply absolute inset-0;
+  @apply w-20 h-20;
+  @apply m-auto;
+  @apply border-8 border-gray-100 rounded-full;
+  @apply animate-spin;
+
+  /* for now not supported in tailwindcss  */
+  border-top-color: theme('colors.gray.800');
+}
