@@ -1,6 +1,0 @@
-.a-icon {
-  @apply block;
-  @apply p-0;
-  @apply pointer-events-none;
-  @apply transition-all duration-200 ease-in-out;
-}

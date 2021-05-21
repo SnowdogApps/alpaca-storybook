@@ -8,5 +8,3 @@ export default {
   mixins: [AIcon]
 }
 </script>
-
-<style src="./Icon.css" />

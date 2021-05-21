@@ -6,8 +6,6 @@ describe('Icon', () => {
     const wrapper = mount(AIcon)
 
     expect(wrapper.element.tagName).toBe('svg')
-    expect(wrapper.classes()).toContain('a-icon')
-    expect(wrapper.classes().length).toBe(1)
     expect(wrapper.attributes().xmlns).toBeDefined()
     expect(wrapper.attributes().xmlns).toEqual('http://www.w3.org/2000/svg')
     expect(wrapper.attributes().role).toBeDefined()
@@ -29,7 +27,7 @@ describe('Icon', () => {
       }
     })
 
-    const title = wrapper.find('.a-icon > title')
+    const title = wrapper.find('svg > title')
 
     expect(wrapper.attributes().role).toBeDefined()
     expect(wrapper.attributes().role).toEqual('img')

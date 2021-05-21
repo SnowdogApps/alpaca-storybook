@@ -1,5 +1,7 @@
-// @vue/component
+import getClass from '../../../utils/helpers/get-class.js'
+
 export default {
+  mixins: [getClass],
   props: {
     /**
      * Icon id for aria-labelledby
@@ -35,6 +37,19 @@ export default {
     viewBox: {
       type: [String, Boolean],
       default: false
+    }
+  },
+  data () {
+    return {
+      config: {
+        base: {
+          icon: [
+            'block',
+            'pointer-events-none',
+            'transition-all', 'duration-200', 'ease-in-out'
+          ]
+        }
+      }
     }
   },
   computed: {

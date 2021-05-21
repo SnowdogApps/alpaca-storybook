@@ -2,11 +2,11 @@
   xmlns="http://www.w3.org/2000/svg"
   :width="`${width}px`"
   :height="`${height}px`"
-  class="a-icon"
   :viewBox="viewBox ? viewBox : `0 0 ${width} ${height}`"
   :aria-labelledby="ariaId"
   :role="title ? 'img' : 'presentation'"
   :focusable="title ? null : 'false'"
+  :class="getClass('icon')"
 >
   <title
     v-if="title"
