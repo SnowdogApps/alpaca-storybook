@@ -1,40 +1,40 @@
-<div
-  role="tablist"
-  :class="getClass('tabs')"
->
-  <button
-    v-for="(tab, i) in tabs"
-    :key="`${tab.id}-tab-trigger`"
-    :id="`${tab.id}-tab-trigger`"
-    :aria-controls="`${tab.id}-tab`"
-    :aria-selected="tab.isActive || 'false'"
-    :aria-expanded="tab.isActive || 'false'"
-    type="button"
-    role="tab"
-    :ref="`button_${i}`"
-    :class="getClass(tab.isActive ? 'tabs__nav-button--active' : 'tabs__nav-button')""
-    @click="selectTab(tab)"
-    @keydown="onKeydown"
-  >
-    <!-- @slot Custom tab button content (Scoped slot) -->
-    <slot
-      name="button"
-      :tab="tab"
-    >
-      {{ tab.name }}
-    </slot>
-    <!-- @slot Custom accordion tab icon (Named slot) -->
-    <slot name="icon">
-
-    </slot>
-  </button>
+<div :class="getClass('tabs')">
   <div
-    ref="content"
-    class="a-tabs__content"
+    role="tablist"
+    :class="getClass('tabs__tablist')"
+  >
+    <button
+      v-for="(tab, i) in tabs"
+      :key="`${tab.id}-tab-trigger`"
+      :id="`${tab.id}-tab-trigger`"
+      :aria-controls="`${tab.id}-tab`"
+      :aria-selected="`${tab.isActive}`"
+      :aria-expanded="`${tab.isActive}`"
+      type="button"
+      role="tab"
+      :ref="`button_${i}`"
+      :class="[
+        getClass('tabs__nav-button'),
+        tab.isActive ? getClass('tabs__nav-button--active') : getClass('tabs__nav-button--inactive')
+      ]"
+      :tabindex="!tab.isActive && -1"
+      @click="selectTab(tab)"
+      @keydown="onKeydown"
+    >
+      <!-- @slot Custom tab button content (Scoped slot) -->
+      <slot
+        name="button"
+        :tab="tab"
+      >
+        {{ tab.name }}
+      </slot>
+    </button>
+  </div>
+  <div
     :class="getClass('tabs__content')"
-    tabindex="-1"
+    tabindex="0"
   >
     <!-- @slot Tab components -->
-    <slot/>
+    <slot />
   </div>
 </div>

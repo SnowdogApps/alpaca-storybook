@@ -1,4 +1,3 @@
-import KeyCodes from '../../utils/key-codes'
 import getClass from '../../../utils/helpers/get-class.js'
 
 export default {
@@ -9,17 +8,27 @@ export default {
       activeFocusedTab: 0,
       config: {
         base: {
-          tabs: [
-            'lg:flex', 'lg:flex-wrap', 'justify-center'
+          tabs: [],
+          tabs__tablist: [
+            'flex', 'w-full', 'no-wrap',
+            'overflow-x-scroll'
           ],
           'tabs__nav-button': [
-            'text-gray-600', 'py-4', 'px-6', 'block', 'hover:text-blue-500'
+            'flex', 'items-center', 'justify-center', 'flex-grow',
+            'px-4', 'py-2',
+            'font-bold', 'leading-loose', 'uppercase', 'whitespace-nowrap'
+          ],
+          'tabs__nav-button--inactive': [
+            'border-b', 'border-gray-200', 'hover:border-primary',
+            'text-gray-400'
           ],
           'tabs__nav-button--active': [
-            'text-gray-600', 'py-4', 'px-6', 'block', 'hover:text-blue-500', 'text-blue-500', 'border-b-2', 'font-medium', 'border-blue-500'
+            'border-b', 'border-primary',
+            'text-primary'
           ],
           tabs__content: [
-            'py-4'
+            'w-full',
+            'px-6', 'py-10'
           ]
         }
       }
@@ -53,38 +62,26 @@ export default {
       this.$refs[el][0].focus()
     },
     onKeydown (e) {
-      const key = e.keyCode
+      const key = e.key
+      const tabsCount = this.tabs.length
 
-      if (key === KeyCodes.TAB) {
-        e.preventDefault()
-        e.stopPropagation()
-        this.$refs.content.focus()
-      } else if (
-        (key === KeyCodes.LEFT ||
-          key === KeyCodes.UP ||
-          key === KeyCodes.HOME) &&
-        this.activeFocusedTab > 0
-      ) {
-        if (key === KeyCodes.HOME) {
-          this.focus('button_0')
-        } else {
-          this.activeFocusedTab = this.activeFocusedTab - 1
-          this.focus(`button_${this.activeFocusedTab}`)
-        }
-      } else if (
-        (key === KeyCodes.RIGHT ||
-          key === KeyCodes.DOWN ||
-          key === KeyCodes.END) &&
-        this.activeFocusedTab < this.tabs.length - 1
-      ) {
-        if (key === KeyCodes.END) {
-          this.focus(`button_${this.tabs.length - 1}`)
-        } else {
-          this.activeFocusedTab = this.activeFocusedTab + 1
-          this.focus(`button_${this.activeFocusedTab}`)
-        }
+      if (key === 'ArrowRight' || key === 'ArrowDown') {
+        this.activeFocusedTab = (this.activeFocusedTab + 1) % tabsCount
+        this.selectTab(this.activeFocusedTab)
+        this.focus(`button_${this.activeFocusedTab}`)
+      } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
+        this.activeFocusedTab = (this.activeFocusedTab - 1 + tabsCount) % tabsCount
+        this.selectTab(this.activeFocusedTab)
+        this.focus(`button_${this.activeFocusedTab}`)
+      } else if (key === 'Home') {
+        this.activeFocusedTab = 0
+        this.selectTab(this.activeFocusedTab)
+        this.focus(`button_${this.activeFocusedTab}`)
+      } else if (key === 'End') {
+        this.activeFocusedTab = tabsCount - 1
+        this.selectTab(this.activeFocusedTab)
+        this.focus(`button_${this.activeFocusedTab}`)
       }
-      this.selectTab(this.activeFocusedTab)
     }
   }
 }
