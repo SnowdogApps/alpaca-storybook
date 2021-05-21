@@ -53,6 +53,7 @@
     "glob": "^7.1.4",
     "jest": "^24.9.0",
     "jest-vue-preprocessor": "^1.5.0",
+    "lodash.merge": "^4.6.2",
     "storybook-addon-vue-info": "1.4.2",
     "storybook-vue-router": "^1.0.7",
     "stylelint": "^11.0.0",

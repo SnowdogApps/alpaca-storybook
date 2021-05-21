@@ -1,0 +1,24 @@
+<img
+  v-if="!usePicture"
+  v-bind="$attrs"
+  :class="[loaded && imgLoadedClass, getClass('image')]"
+  :src="src"
+  :srcset="srcset"
+  @load="load"
+  @error="error"
+>
+<picture v-else class="block">
+  <!-- @slot List of sources inside picture -->
+  <slot v-if="intersected" />
+  <!-- @slot List of sources inside picture tag - with placeholder src -->
+  <slot v-else name="placeholder" />
+  <img
+    v-bind="$attrs"
+    ref="pictureImg"
+    :class="[loaded && imgLoadedClass, getClass('image')]"
+    :src="src"
+    :srcset="srcset"
+    @load="loadPicture"
+    @error="error"
+  >
+</picture>

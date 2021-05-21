@@ -1,0 +1,13 @@
+<img
+  v-if="!usePicture"
+  v-bind="$attrs"
+  :class="getClass('image')"
+>
+<picture v-else>
+  <!-- @slot List of sources inside picture -->
+  <slot />
+  <img
+    v-bind="$attrs"
+    :class="getClass('image')"
+  >
+</picture>
