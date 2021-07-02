@@ -1,0 +1,18 @@
+.a-list-item {
+  @apply p-2;
+}
+
+.a-list-item--label {
+  @apply float-left clear-left;
+  @apply table-cell;
+  @apply pt-0 pb-2 pl-0;
+}
+
+.a-list-item--label::after {
+  content: ":";
+}
+
+.a-list-item--value {
+  @apply table-cell;
+  @apply pt-0 pr-2 pb-2 pl-0;
+}

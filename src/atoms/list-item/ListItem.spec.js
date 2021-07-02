@@ -6,8 +6,6 @@ describe('ListItem', () => {
     const wrapper = mount(AListItem)
 
     expect(wrapper.is('li')).toBe(true)
-    expect(wrapper.classes()).toContain('a-list-item')
-    expect(wrapper.classes().length).toBe(1)
   })
 
   it('renders slot text when passed', () => {
@@ -17,8 +15,8 @@ describe('ListItem', () => {
       }
     })
 
-    expect(wrapper.find('.a-list-item > span').exists()).toBe(true)
-    expect(wrapper.find('.a-list-item > span').text()).toEqual('List item default text')
+    expect(wrapper.find('span').exists()).toBe(true)
+    expect(wrapper.find('span').text()).toEqual('List item default text')
   })
 
   it('should be generated with the `dt` passed as tag', () => {
